@@ -8,16 +8,17 @@
     "url": "https://github.com/hackages/ngx-errors.git",
     "type": "git"
   },
+  "main": "dist/index.js",
   "scripts": {
     "build": "yarn run clean && yarn run copy && yarn run compile",
-    "clean": "rimraf dist && mkdir -p dist",
-    "compile": "yarn run ngc && yarn run rollup",
+    "clean": "rimraf dist && mkdir dist",
+    "compile": "yarn run ngc",
     "copy": "cp src/package.json dist/package.json && cp README.md dist/README.md",
     "example": "webpack-dev-server --inline --hot",
     "prestart": "yarn run clean && yarn run copy",
     "start": "nodemon --exec yarn run compile -e ts --watch src",
-    "rollup": "rollup -c rollup.config.js >/dev/null 2>&1",
-    "ngc": "ngc -p tsconfig.json",
+    "rollup": "rollup -c rollup.config.js",
+    "ngc": "tsc -p tsconfig.json",
     "test": "karma start --single-run",
     "test:watch": "karma start"
   },
